@@ -1,0 +1,20 @@
+<div></div>
+<img>
+<script>
+        let img = document.querySelectorAll("img")[0];
+        let div = document.querySelectorAll("div")[0];
+        let start = performance.now(); 
+        let name = "photo";
+        if ((new URL(document.location)).searchParams.get("hq")) {
+                name = "photo-hq";
+        }
+        img.src = name + ".jxl";
+        img.decode()
+        .then(() => {
+                time = performance.now() - start;
+                div.innerHTML = "done " + time + " ms"
+        })
+        .catch((encodingError) => {
+                // Do something with the error.
+        })
+</script>
